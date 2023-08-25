@@ -21,8 +21,8 @@ class HomeController extends Controller
     {
         $add = Product::create([
             'nama_produk' => $req->nama,
-            'harga' => $req->harga,
-            'stok' => $req->stok
+            'jumlah' => $req->jumlah,
+            'harga_total' => $req->harga_total
         ]);
         if ($add) {
             return redirect('/home-page');
@@ -39,14 +39,14 @@ class HomeController extends Controller
     {
         $product = Product::find($req->id);
         $product->nama_produk = $req->nama;
-        $product->harga = $req->harga;
-        $product->stok = $req->stok;
+        $product->jumlah = $req->jumlah;
+        $product->harga_total = $req->harga_total;
         $product->save();
         return redirect('/home-page');
     }
     public function deleteProduct($id)
     {
-        $delete = DB::table('product')->delete($id);
+        $delete = DB::table('cart')->delete($id);
         if ($delete) {
             return redirect('/home-page');
         }

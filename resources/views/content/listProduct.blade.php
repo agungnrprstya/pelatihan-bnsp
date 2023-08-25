@@ -10,10 +10,10 @@
                         Product name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Price
+                        Jumlah
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Stok
+                        Harga Total
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Action
@@ -28,10 +28,10 @@
                                 {{ $item->nama_produk }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->harga }}
+                                {{ $item->jumlah }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->stok }}
+                                {{ $item->harga_total }}
                             </td>
                             <td class="px-6 py-4 flex gap-4">
                                 <a href="{{ url('edit-product/' . $item->id) }}"><button

@@ -9,11 +9,11 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected  $table = 'product';
+    protected  $table = 'cart';
 
     protected $fillable = [
         'nama_produk',
-        'harga',
-        'stok'
+        'jumlah',
+        'harga_total'
     ];
 }
