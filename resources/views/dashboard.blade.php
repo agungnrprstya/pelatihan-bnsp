@@ -36,7 +36,7 @@
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
-                    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                    <div class="sidebar-brand-text">Toko Semoga Berkah</div>
                 </a>
 
                 <!-- Divider -->
@@ -52,7 +52,7 @@
                 <!-- Divider -->
                 <hr class="sidebar-divider">
 
-                <!-- Heading -->
+                {{-- <!-- Heading -->
                 <div class="sidebar-heading">
                     Interface
                 </div>
@@ -113,10 +113,10 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Tables</span></a>
                 </li>
-                <hr class="sidebar-divider d-none d-md-block">
+                <hr class="sidebar-divider d-none d-md-block"> --}}
             </ul>
             <div id="content-wrapper" class="d-flex flex-column">
-                <div id="content" class="flex">
+                <div id="content" class="flex bg-slate-300">
                     <div class="container-fluid">
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
                             {{-- <h1 class="h3 mb-0 text-gray-800">Dashboard</h1> --}}
@@ -158,9 +158,16 @@
                                                     </td>
                                                     <td class=" flex gap-4 py-3">
                                                         <a href="{{ url('edit-cart/' . $item->id) }}"><button
-                                                                class="bg-blue-500 text-white rounded-lg p-2 hover:brightness-125 transition-all">Update</button></a>
-                                                        <a href="{{ url('delete-cart/' . $item->id) }}"><button
-                                                                class="bg-red-500 text-white rounded-lg p-2 hover:brightness-125 transition-all">Delete</button></a>
+                                                                class="bg-yellow-500 text-white rounded-lg p-2 hover:brightness-125 transition-all">Update</button></a>
+                                                        {{-- <a href="{{ url('delete-cart/' . $item->id) }}">
+                                                            <button
+                                                                class="bg-red-500 text-white rounded-lg p-2 hover:brightness-125 transition-all">Delete</button></a> --}}
+                                                        <a href="{{ url('delete-cart/' . $item->id) }}"
+                                                            onclick="return confirmDelete('{{ $item->id }}')">
+                                                            <button
+                                                                class="bg-red-500 text-white rounded-lg p-2 hover:brightness-125 transition-all">Delete</button>
+                                                        </a>
+
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -197,6 +204,17 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('assets/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
+
+    <script>
+        function confirmDelete(itemId) {
+            var result = confirm("Apakah Anda yakin ingin menghapus item ini?");
+            if (result) {
+                window.location.href = "{{ url('delete-cart') }}" + '/' + itemId;
+            }
+            return false;
+        }
+    </script>
+
 </body>
 
 </html>

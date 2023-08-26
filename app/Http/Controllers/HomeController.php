@@ -37,20 +37,22 @@ class HomeController extends Controller
     }
     public function save(Request $req)
     {
-        $product = Cart::find($req->id);
-        $product->nama_produk = $req->nama;
-        $product->jumlah = $req->jumlah;
-        $product->harga_total = $req->harga_total;
-        $product->save();
+        $cart = Cart::find($req->id);
+        $cart->nama_produk = $req->nama;
+        $cart->jumlah = $req->jumlah;
+        $cart->harga_total = $req->harga_total;
+        $cart->save();
         return redirect('/dashboard');
     }
+
     public function deleteCart($id)
     {
-        $delete = DB::table('cart')->delete($id);
+        $delete = DB::table('cart')->where('id', $id)->delete();
         if ($delete) {
             return redirect('/dashboard');
         }
     }
+
 
     public function dashboard()
     {
