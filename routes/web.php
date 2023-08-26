@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home-page', [HomeController::class, 'index']);
-Route::get('/add-product', [HomeController::class, 'addProduct']);
+Route::get('/add-cart', [HomeController::class, 'addCart']);
 Route::post('/add', [HomeController::class, 'add']);
-Route::get('/edit-product/{id}', [HomeController::class, 'editProduct']);
+Route::get('/edit-cart/{id}', [HomeController::class, 'editCart']);
 Route::post('/save', [HomeController::class, 'save']);
 Route::get('/delete-product/{id}', [HomeController::class, 'deleteProduct']);
 

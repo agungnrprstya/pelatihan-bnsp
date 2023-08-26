@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="flex justify-center mt-20">
+    <div>
         @yield('content')
     </div>
 </body>

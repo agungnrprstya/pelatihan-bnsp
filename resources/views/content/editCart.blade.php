@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>xDashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -116,65 +116,42 @@
                 <hr class="sidebar-divider d-none d-md-block">
             </ul>
             <div id="content-wrapper" class="d-flex flex-column">
-                <div id="content" class="flex">
+                <div id="content">
                     <div class="container-fluid">
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            {{-- <h1 class="h3 mb-0 text-gray-800">Dashboard</h1> --}}
+                            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         </div>
-                        <div class="justify-center">
-                            <div class="flex flex-col justify-center">
-                                <a href="{{ url('/add-cart') }}"><button
-                                        class="bg-blue-500 rounded-lg text-white p-2 mb-5">Tambah Cart</button></a>
-                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead
-                                        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th scope="col" class="px-6 py-3">
-                                                Product name
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Jumlah
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Harga Total
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @if ($data)
-                                            @foreach ($data as $item)
-                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                    <td
-                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        {{ $item->nama_produk }}
-                                                    </td>
-                                                    <td class="px-6 py-4">
-                                                        {{ $item->jumlah }}
-                                                    </td>
-                                                    <td class="px-6 py-4">
-                                                        Rp.{{ number_format($item->harga_total, 0) }}
-                                                    </td>
-                                                    <td class="px-6 py-4 flex gap-4">
-                                                        <a href="{{ url('edit-cart/' . $item->id) }}"><button
-                                                                class="bg-yellow-500 text-white rounded-lg p-2">Update</button></a>
-                                                        <a href="{{ url('delete-product/' . $item->id) }}"><button
-                                                                class="bg-red-500 text-white rounded-lg p-2">Delete</button></a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @else
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td colspan="100%"
-                                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    Data belum tersedia
-                                                </td>
-                                            </tr>
-                                        @endif
-                                    </tbody>
-                                </table>
+                        <div class="row">
+                            <div class="w-96 h-fit p-5 rounded-lg bg-slate-100">
+                                <form action="{{ url('save') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $data->id }}">
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="nama" value="{{ $data->nama_produk }}"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                            placeholder=" " required />
+                                        <label
+                                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama
+                                            Produk</label>
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="number" name="jumlah" value="{{ $data->jumlah }}"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                            placeholder=" " required />
+                                        <label
+                                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Jumlah</label>
+                                    </div>
+                                    <div class="relative z-0 w-full mb-6 group">
+                                        <input type="number" name="harga_total" value="{{ $data->harga_total }}"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                            placeholder=" " required />
+                                        <label
+                                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Harga
+                                            Total</label>
+                                    </div>
+                                    <button type="submit"
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                                </form>
                             </div>
                         </div>
                     </div>
