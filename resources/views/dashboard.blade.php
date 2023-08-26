@@ -160,7 +160,7 @@
                                                     <td class="px-6 py-4 flex gap-4">
                                                         <a href="{{ url('edit-cart/' . $item->id) }}"><button
                                                                 class="bg-yellow-500 text-white rounded-lg p-2">Update</button></a>
-                                                        <a href="{{ url('delete-product/' . $item->id) }}"><button
+                                                        <a href="{{ url('delete-cart/' . $item->id) }}"><button
                                                                 class="bg-red-500 text-white rounded-lg p-2">Delete</button></a>
                                                     </td>
                                                 </tr>
