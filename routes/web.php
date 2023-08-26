@@ -22,6 +22,6 @@ Route::get('/add-cart', [HomeController::class, 'addCart']);
 Route::post('/add', [HomeController::class, 'add']);
 Route::get('/edit-cart/{id}', [HomeController::class, 'editCart']);
 Route::post('/save', [HomeController::class, 'save']);
-Route::get('/delete-product/{id}', [HomeController::class, 'deleteProduct']);
+Route::get('/delete-cart/{id}', [HomeController::class, 'deleteCart']);
 
 Route::get('dashboard', [HomeController::class, 'dashboard']);

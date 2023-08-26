@@ -99,7 +99,7 @@
             <div class="sidebar-heading">
                 Addons
             </div>
-
+            
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
